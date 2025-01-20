@@ -19,7 +19,7 @@ def chatWithGemini(prompt):
 if __name__ == "__main__":
     while True:
         userInput = input("You: ")
-        if userInput in ["exit", "quit"]:
+        if userInput in ["exit", "quit", "bye", "goodbye", "see ya later", "peace", "adios"]:
             print("Goodbye!")
             break
         response = chatWithGemini(userInput)
