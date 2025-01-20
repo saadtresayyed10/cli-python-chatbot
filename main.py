@@ -10,12 +10,17 @@ genai.configure(api_key=API_KEY)
 def chatWithGemini(prompt):
     model = genai.GenerativeModel("gemini-pro")
     response = model.generate_content(prompt)
-    return response.text
+    
+    if response and hasattr(response, "text"):
+        return response.text.strip()
+    return "I cannot understand this..."
 
-while True:
-    userInput = input("You: ")
-    if userInput in ["exit", "quit"]:
-        print("Goodbye!")
-        break
-    response = chatWithGemini(userInput)
-    print(f"Bot: {response}")
+
+if __name__ == "__main__":
+    while True:
+        userInput = input("You: ")
+        if userInput in ["exit", "quit"]:
+            print("Goodbye!")
+            break
+        response = chatWithGemini(userInput)
+        print(f"Bot: {response}")
